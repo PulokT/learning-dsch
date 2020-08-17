@@ -1,0 +1,29 @@
+USER SYMBOL by DSCH 2.7a
+DATE 5/31/2018 12:31:10 PM
+SYM  #OR
+BB(0,0,40,30)
+TITLE 10 -2  #OR
+MODEL 6000
+REC(5,5,30,20)
+PIN(0,10,0.00,0.00)in2
+PIN(0,20,0.00,0.00)in1
+PIN(40,10,2.00,1.00)out1
+LIG(0,10,5,10)
+LIG(0,20,5,20)
+LIG(35,10,40,10)
+LIG(5,5,5,25)
+LIG(5,5,35,5)
+LIG(35,5,35,25)
+LIG(35,25,5,25)
+VLG module OR( in2,in1,out1);
+VLG  input in2,in1;
+VLG  output out1;
+VLG  wire w5;
+VLG  pmos #(12) pmos_NO1(w5,vdd,in2); //  
+VLG  pmos #(40) pmos_NO2(w4,w5,in1); //  
+VLG  nmos #(40) nmos_NO3(w4,vss,in2); //  
+VLG  nmos #(40) nmos_NO4(w4,vss,in1); //  
+VLG  pmos #(23) pmos_NO5(out1,vdd,w4); //  
+VLG  nmos #(23) nmos_NO6(out1,vss,w4); //  
+VLG endmodule
+FSYM

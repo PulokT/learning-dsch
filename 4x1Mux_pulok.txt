@@ -1,0 +1,37 @@
+// DSCH 2.7a
+// 7/16/2018 4:50:16 PM
+// C:\Users\13321029\Desktop\4x1Mux_pulok.sch
+
+module 4x1Mux_pulok( selection0,selection1,in3,in4,in5,in6,out1);
+ input selection0,selection1,in3,in4,in5,in6;
+ output out1;
+ nmos #(31) nmos(out1,w6,selection0); // 1.0u 0.12u
+ nmos #(31) nmos(out1,w7,w2); // 1.0u 0.12u
+ nmos #(31) nmos(out1,w8,selection0); // 1.0u 0.12u
+ nmos #(31) nmos(out1,w9,w2); // 1.0u 0.12u
+ nmos #(10) nmos(w9,in6,w5); // 1.0u 0.12u
+ nmos #(10) nmos(w8,in5,w5); // 1.0u 0.12u
+ nmos #(10) nmos(w7,in4,selection1); // 1.0u 0.12u
+ nmos #(10) nmos(w6,in3,selection1); // 1.0u 0.12u
+ nmos #(30) nmos_pu1(w2,vss,selection0); //  
+ pmos #(30) pmos_pu2(w2,vdd,selection0); //  
+ nmos #(30) nmos_pu3(w5,vss,selection1); //  
+ pmos #(30) pmos_pu4(w5,vdd,selection1); //  
+endmodule
+
+// Simulation parameters in Verilog Format
+always
+#1000 selection 0=~selection 0;
+#2000 selection 1=~selection 1;
+#4000 in3=~in3;
+#8000 in4=~in4;
+#16000 in5=~in5;
+#32000 in6=~in6;
+
+// Simulation parameters
+// selection 0 CLK 10 10
+// selection 1 CLK 20 20
+// in3 CLK 40 40
+// in4 CLK 80 80
+// in5 CLK 160 160
+// in6 CLK 320 320

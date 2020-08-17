@@ -1,0 +1,48 @@
+USER SYMBOL by DSCH 2.7a
+DATE 5/31/2018 12:34:55 PM
+SYM  #Half_Adder
+BB(0,0,40,30)
+TITLE 10 -2  #Half_Adder
+MODEL 6000
+REC(5,5,30,20)
+PIN(0,20,0.00,0.00)A
+PIN(0,10,0.00,0.00)B
+PIN(40,20,2.00,1.00)Carry
+PIN(40,10,2.00,1.00)Sum
+LIG(0,20,5,20)
+LIG(0,10,5,10)
+LIG(35,20,40,20)
+LIG(35,10,40,10)
+LIG(5,5,5,25)
+LIG(5,5,35,5)
+LIG(35,5,35,25)
+LIG(35,25,5,25)
+VLG module Half_Adder( A,B,Carry,Sum);
+VLG  input A,B;
+VLG  output Carry,Sum;
+VLG  wire w5,w6,w7,w8,w9,w10,w11,w12;
+VLG  wire w13;
+VLG  pmos #(38) pmos_NA1_XO1(Sum,vdd,w5); //  
+VLG  pmos #(38) pmos_NA2_XO2(Sum,vdd,w6); //  
+VLG  nmos #(38) nmos_NA3_XO3(Sum,w7,w5); //  
+VLG  nmos #(13) nmos_NA4_XO4(w7,vss,w6); //  
+VLG  pmos #(69) pmos_NA5_XO5(w8,vdd,A); //  
+VLG  pmos #(69) pmos_NA6_XO6(w8,vdd,B); //  
+VLG  nmos #(69) nmos_NA7_XO7(w8,w9,A); //  
+VLG  nmos #(13) nmos_NA8_XO8(w9,vss,B); //  
+VLG  pmos #(48) pmos_NA9_XO9(w6,vdd,w8); //  
+VLG  pmos #(48) pmos_NA10_XO10(w6,vdd,B); //  
+VLG  nmos #(48) nmos_NA11_XO11(w6,w10,w8); //  
+VLG  nmos #(13) nmos_NA12_XO12(w10,vss,B); //  
+VLG  pmos #(48) pmos_NA13_XO13(w5,vdd,A); //  
+VLG  pmos #(48) pmos_NA14_XO14(w5,vdd,w8); //  
+VLG  nmos #(48) nmos_NA15_XO15(w5,w11,A); //  
+VLG  nmos #(13) nmos_NA16_XO16(w11,vss,w8); //  
+VLG  pmos #(26) pmos_NO1_AN17(Carry,vdd,w12); //  
+VLG  nmos #(26) nmos_NO2_AN18(Carry,vss,w12); //  
+VLG  pmos #(48) pmos_NA3_AN19(w12,vdd,A); //  
+VLG  pmos #(48) pmos_NA4_AN20(w12,vdd,B); //  
+VLG  nmos #(48) nmos_NA5_AN21(w12,w13,A); //  
+VLG  nmos #(13) nmos_NA6_AN22(w13,vss,B); //  
+VLG endmodule
+FSYM

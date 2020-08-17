@@ -1,0 +1,73 @@
+USER SYMBOL by DSCH 2.7a
+DATE 7/16/2018 5:40:13 PM
+SYM  #8x1MUX_PULOK.sym
+BB(0,0,40,120)
+TITLE 10 -2  #8x1MUX_PULOK.sym
+MODEL 6000
+REC(5,5,30,110)
+PIN(0,10,0.00,0.00)S02
+PIN(0,20,0.00,0.00)S01
+PIN(0,30,0.00,0.00)S0
+PIN(0,110,0.00,0.00)in0
+PIN(0,100,0.00,0.00)in1
+PIN(0,90,0.00,0.00)in2
+PIN(0,80,0.00,0.00)in3
+PIN(0,70,0.00,0.00)in4
+PIN(0,60,0.00,0.00)in5
+PIN(0,50,0.00,0.00)in6
+PIN(0,40,0.00,0.00)in7
+PIN(40,10,2.00,1.00)out1
+LIG(0,10,5,10)
+LIG(0,20,5,20)
+LIG(0,30,5,30)
+LIG(0,110,5,110)
+LIG(0,100,5,100)
+LIG(0,90,5,90)
+LIG(0,80,5,80)
+LIG(0,70,5,70)
+LIG(0,60,5,60)
+LIG(0,50,5,50)
+LIG(0,40,5,40)
+LIG(35,10,40,10)
+LIG(5,5,5,115)
+LIG(5,5,35,5)
+LIG(35,5,35,115)
+LIG(35,115,5,115)
+VLG module 8x1MUX_PULOK( S02,S01,S0,in0,in1,in2,in3,in4,
+VLG  in5,in6,in7,out1);
+VLG  input S02,S01,S0,in0,in1,in2,in3,in4;
+VLG  input in5,in6,in7;
+VLG  output out1;
+VLG  wire w15,w16,w17,w18,w19,w20,w21,w22;
+VLG  wire w23,w24,w25,w26,w27;
+VLG  nmos #(44) nmos_4x1(w7,w15,S01); //  
+VLG  nmos #(44) nmos_4x2(w7,w16,w17); //  
+VLG  nmos #(44) nmos_4x3(w7,w18,S01); //  
+VLG  nmos #(44) nmos_4x4(w7,w19,w17); //  
+VLG  nmos #(12) nmos_4x5(w19,in0,w20); //  
+VLG  nmos #(12) nmos_4x6(w18,in1,w20); //  
+VLG  nmos #(12) nmos_4x7(w16,in2,S0); //  
+VLG  nmos #(12) nmos_4x8(w15,in3,S0); //  
+VLG  nmos #(36) nmos_pu1_4x9(w17,vss,S01); //  
+VLG  pmos #(36) pmos_pu2_4x10(w17,vdd,S01); //  
+VLG  nmos #(36) nmos_pu3_4x11(w20,vss,S0); //  
+VLG  pmos #(36) pmos_pu4_4x12(w20,vdd,S0); //  
+VLG  nmos #(44) nmos_4x13(w12,w21,S01); //  
+VLG  nmos #(44) nmos_4x14(w12,w22,w23); //  
+VLG  nmos #(44) nmos_4x15(w12,w24,S01); //  
+VLG  nmos #(44) nmos_4x16(w12,w25,w23); //  
+VLG  nmos #(12) nmos_4x17(w25,in4,w26); //  
+VLG  nmos #(12) nmos_4x18(w24,in5,w26); //  
+VLG  nmos #(12) nmos_4x19(w22,in6,S0); //  
+VLG  nmos #(12) nmos_4x20(w21,in7,S0); //  
+VLG  nmos #(36) nmos_pu1_4x21(w23,vss,S01); //  
+VLG  pmos #(36) pmos_pu2_4x22(w23,vdd,S01); //  
+VLG  nmos #(36) nmos_pu3_4x23(w26,vss,S0); //  
+VLG  pmos #(36) pmos_pu4_4x24(w26,vdd,S0); //  
+VLG  nmos #(15) nmos_2X25(out1,w7,w27); //  
+VLG  nmos #(15) nmos_2X26(out1,w12,S02); //  
+VLG  not #(22) not_gate_2X27(w27,S02);
+VLG  nmos #(26) nmos_no1_2X28(w27,vss,S02); //  
+VLG  pmos #(26) pmos_no2_2X29(w27,vdd,S02); //  
+VLG endmodule
+FSYM

@@ -1,0 +1,46 @@
+// DSCH 2.7a
+// 7/16/2018 5:18:15 PM
+// C:\Users\13321029\Desktop\FULLADDER_PULOK.sch
+
+module FULLADDER_PULOK( C_in,B,A,Sum,C_out);
+ input C_in,B,A;
+ output Sum,C_out;
+ wire w9,w10,w11,w12,w13,w14,w15,w16;
+ pmos #(23) pmos_XO1(w9,vdd,B); //  
+ nmos #(23) nmos_XO2(w9,vss,B); //  
+ pmos #(44) pmos_XO3(w3,B,A); //  
+ nmos #(44) nmos_XO4(w3,w9,A); //  
+ pmos #(44) pmos_AN5(w10,vdd,A); //  
+ nmos #(44) nmos_AN6(w10,w11,A); //  
+ nmos #(12) nmos_AN7(w11,vss,B); //  
+ pmos #(44) pmos_AN8(w10,vdd,B); //  
+ pmos #(30) pmos_AN9(w4,vdd,w10); //  
+ nmos #(30) nmos_AN10(w4,vss,w10); //  
+ pmos #(44) pmos_AN11(w12,vdd,w3); //  
+ nmos #(44) nmos_AN12(w12,w13,w3); //  
+ nmos #(12) nmos_AN13(w13,vss,C_in); //  
+ pmos #(44) pmos_AN14(w12,vdd,C_in); //  
+ pmos #(30) pmos_AN15(w6,vdd,w12); //  
+ nmos #(30) nmos_AN16(w6,vss,w12); //  
+ pmos #(23) pmos_XO17(w14,vdd,C_in); //  
+ nmos #(23) nmos_XO18(w14,vss,C_in); //  
+ pmos #(23) pmos_XO19(Sum,C_in,w3); //  
+ nmos #(23) nmos_XO20(Sum,w14,w3); //  
+ nmos #(44) nmos_OR21(w15,vss,w4); //  
+ pmos #(12) pmos_OR22(w16,vdd,w4); //  
+ pmos #(44) pmos_OR23(w15,w16,w6); //  
+ nmos #(44) nmos_OR24(w15,vss,w6); //  
+ nmos #(23) nmos_OR25(C_out,vss,w15); //  
+ pmos #(23) pmos_OR26(C_out,vdd,w15); //  
+endmodule
+
+// Simulation parameters in Verilog Format
+always
+#1000 C_in=~C_in;
+#2000 B=~B;
+#4000 A=~A;
+
+// Simulation parameters
+// C_in CLK 10 10
+// B CLK 20 20
+// A CLK 40 40
